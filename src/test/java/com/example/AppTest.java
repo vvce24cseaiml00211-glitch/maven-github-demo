@@ -1,50 +1,34 @@
 
 package com.example;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
 
 public class AppTest {
 
     @Test
-    public void testCalculateSalary() {
-
-        double basicSalary = 30000;
-
-        double hra = basicSalary * 0.20;
-        double da = basicSalary * 0.10;
-        double pf = basicSalary * 0.12;
-
-        double grossSalary = basicSalary + hra + da;
-        double netSalary = grossSalary - pf;
-
-        assertEquals(6000, hra, 0.01);
-        assertEquals(3000, da, 0.01);
-        assertEquals(3600, pf, 0.01);
-        assertEquals(39000, grossSalary, 0.01);
-        assertEquals(35400, netSalary, 0.01);
+    public void testHRA() {
+        assertEquals(46000.0, App.calculateHRA(230000), 0.01);
     }
 
     @Test
-    public void testEmployeeName() {
-        String name = "Rahul";
-
-        assertEquals("Rahul", name);
+    public void testDA() {
+        assertEquals(23000.0, App.calculateDA(230000), 0.01);
     }
 
     @Test
-    public void testEmployeeId() {
-        int id = 101;
-
-        assertEquals(101, id);
+    public void testPF() {
+        assertEquals(27600.0, App.calculatePF(230000), 0.01);
     }
 
     @Test
-    public void testBasicSalary() {
-        double salary = 30000;
-
-        assertTrue(salary > 0);
+    public void testGrossSalary() {
+        assertEquals(299000.0, App.calculateGrossSalary(230000), 0.01);
     }
 
+    @Test
+    public void testNetSalary() {
+        assertEquals(271400.0, App.calculateNetSalary(230000), 0.01);
+    }
 }
